@@ -44,6 +44,7 @@ const bfs = (chessboard, startPos, endPos) => {
     position: startPos,
     distance: 0,
     parent: null,
+    path: [startPos],
   });
 
   while (queue.length > 0) {
@@ -53,6 +54,7 @@ const bfs = (chessboard, startPos, endPos) => {
 
     if (currentPosition[0] === endPos[0] && currentPosition[1] === endPos[1]) {
       console.log(currentPosition);
+      console.log(current.path);
       break;
     }
 
@@ -70,6 +72,7 @@ const bfs = (chessboard, startPos, endPos) => {
           position: [newX, newY],
           distance: currentDistance + 1,
           parent: currentPosition,
+          path: [...current.path, [newX, newY]],
         });
       }
     }
@@ -80,5 +83,5 @@ const bfs = (chessboard, startPos, endPos) => {
 const chessboardSize = 8; // Adjust the size as needed
 const chessboard = initializeChessboard(chessboardSize);
 const startPos = [0, 0];
-const endPos = [2, 1];
+const endPos = [5, 1];
 bfs(chessboard, startPos, endPos);
