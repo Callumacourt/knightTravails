@@ -1,3 +1,3 @@
 import initializeChessboard from './game';
 
-initializeChessboard(8);
+const chessboard = initializeChessboard(8);

@@ -11,6 +11,7 @@ export default function initializeChessboard(n) {
   }
 
   console.log(chessboard);
+  return chessboard; // Return the initialized chessboard
 }
 
 function getValidMoves(x, y, chessboardSize) {
@@ -36,29 +37,48 @@ function getValidMoves(x, y, chessboardSize) {
   return validMoves;
 }
 
-function searchAlgo(startX, startY, chessboardSize) {
-  const start = [startX, startY];
+const bfs = (chessboard, startPos, endPos) => {
   const queue = [];
-  queue.push(start);
+
+  queue.push({
+    position: startPos,
+    distance: 0,
+    parent: null,
+  });
 
   while (queue.length > 0) {
-    let currentMove = queue.pop();
-    let possibleMoves = getValidMoves(
-      currentMove[0],
-      currentMove[1],
-      chessboardSize
+    const current = queue.shift();
+    const currentPosition = current.position;
+    const currentDistance = current.distance;
+
+    if (currentPosition[0] === endPos[0] && currentPosition[1] === endPos[1]) {
+      console.log(currentPosition);
+      break;
+    }
+
+    const validMoves = getValidMoves(
+      currentPosition[0],
+      currentPosition[1],
+      chessboard.length // Pass the chessboard size
     );
 
-    possibleMoves.forEach(move => {
-      queue.push(move);
-      if (move !== end) {
-        searchAlgo(new coords());
-        // find a way to weight towards the end move so it gets there quicker
+    for (const move of validMoves) {
+      const [newX, newY] = move;
+      if (!chessboard[newX][newY]) {
+        chessboard[newX][newY] = true;
+        queue.push({
+          position: [newX, newY],
+          distance: currentDistance + 1,
+          parent: currentPosition,
+        });
       }
-    });
+    }
   }
-}
+};
 
-function knightTravails(x, y) {
-  const currentPosition = (3, 3);
-}
+// Usage
+const chessboardSize = 8; // Adjust the size as needed
+const chessboard = initializeChessboard(chessboardSize);
+const startPos = [0, 0];
+const endPos = [2, 1];
+bfs(chessboard, startPos, endPos);
