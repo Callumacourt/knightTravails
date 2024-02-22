@@ -36,8 +36,9 @@ function getValidMoves(x, y, chessboardSize) {
   return validMoves;
 }
 
-export const bfs = (chessboard, startPos, endPos) => {
+export const bfs = (Ogchessboard, startPos, endPos) => {
   const queue = [];
+  const chessboard = Ogchessboard.map(row => row.slice());
 
   queue.push({
     position: startPos,

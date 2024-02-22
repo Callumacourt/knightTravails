@@ -1,25 +1,42 @@
-export default function addListeners() {
+// Import the bfs function
+import { bfs } from './game';
+
+export default function addListeners(chessboard) {
   const cells = document.querySelectorAll('.cell');
   let startCell = null;
   let endCell = null;
 
   cells.forEach(cell => {
-    cell.addEventListener('click', event => {
+    cell.addEventListener('click', () => {
       if (!startCell) {
-        startCell = event.currentTarget;
+        startCell = cell;
         console.log(
           'Starting position:',
           startCell.dataset.row,
           startCell.dataset.col
         );
       } else if (!endCell) {
-        endCell = event.currentTarget;
+        endCell = cell;
         console.log(
           'Ending position:',
           endCell.dataset.row,
           endCell.dataset.col
         );
 
+        // Convert dataset values to integers
+        const startCoords = [
+          parseInt(startCell.dataset.row),
+          parseInt(startCell.dataset.col),
+        ];
+        const endCoords = [
+          parseInt(endCell.dataset.row),
+          parseInt(endCell.dataset.col),
+        ];
+
+        // Call BFS function
+        bfs(chessboard, startCoords, endCoords);
+
+        // Reset start and end cells for the next selection
         startCell = null;
         endCell = null;
       }
