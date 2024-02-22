@@ -10,7 +10,6 @@ export default function initializeChessboard(n) {
     chessboard.push(row);
   }
 
-  console.log(chessboard);
   return chessboard; // Return the initialized chessboard
 }
 
@@ -82,6 +81,6 @@ const bfs = (chessboard, startPos, endPos) => {
 // Usage
 const chessboardSize = 8; // Adjust the size as needed
 const chessboard = initializeChessboard(chessboardSize);
-const startPos = [0, 0];
+const startPos = [1, 1];
 const endPos = [5, 1];
 bfs(chessboard, startPos, endPos);
