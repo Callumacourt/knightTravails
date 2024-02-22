@@ -1,3 +1,5 @@
+import highlightPath from './highlightPath';
+
 export default function initializeChessboard(n) {
   const chessboard = [];
 
@@ -52,6 +54,7 @@ export const bfs = (Ogchessboard, startPos, endPos) => {
 
     if (currentPosition[0] === endPos[0] && currentPosition[1] === endPos[1]) {
       console.log(current.path);
+      highlightPath(current.path);
       return current.path; // Return the path when destination is reached
     }
 

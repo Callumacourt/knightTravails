@@ -1,5 +1,6 @@
 // Import the bfs function
 import { bfs } from './game';
+import highlightPath from './highlightPath';
 
 export default function addListeners(chessboard) {
   const cells = document.querySelectorAll('.cell');
