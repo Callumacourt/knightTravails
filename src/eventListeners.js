@@ -25,12 +25,12 @@ export default function addListeners(chessboard) {
 
         // Convert dataset values to integers
         const startCoords = [
-          parseInt(startCell.dataset.row),
-          parseInt(startCell.dataset.col),
+          parseInt(startCell.dataset.row) - 1,
+          parseInt(startCell.dataset.col) - 1,
         ];
         const endCoords = [
-          parseInt(endCell.dataset.row),
-          parseInt(endCell.dataset.col),
+          parseInt(endCell.dataset.row) - 1,
+          parseInt(endCell.dataset.col) - 1,
         ];
 
         // Call BFS function

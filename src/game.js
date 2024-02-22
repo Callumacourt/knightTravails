@@ -13,7 +13,7 @@ export default function initializeChessboard(n) {
   return chessboard; // Return the initialized chessboard
 }
 
-function getValidMoves(x, y, chessboardSize) {
+function getValidMoves(x, y) {
   const possibleMoves = [
     [x - 2, y + 1],
     [x - 1, y + 2],
@@ -28,9 +28,7 @@ function getValidMoves(x, y, chessboardSize) {
   const validMoves = possibleMoves.filter(move => {
     const [newX, newY] = move;
     // Within the chessboard boundaries?
-    return (
-      newX >= 0 && newY >= 0 && newX < chessboardSize && newY < chessboardSize
-    );
+    return newX >= 0 && newY >= 0 && newX < 8 && newY < 8;
   });
 
   return validMoves;
@@ -53,9 +51,8 @@ export const bfs = (Ogchessboard, startPos, endPos) => {
     const currentDistance = current.distance;
 
     if (currentPosition[0] === endPos[0] && currentPosition[1] === endPos[1]) {
-      console.log(currentPosition);
       console.log(current.path);
-      break;
+      return current.path; // Return the path when destination is reached
     }
 
     const validMoves = getValidMoves(
@@ -63,10 +60,15 @@ export const bfs = (Ogchessboard, startPos, endPos) => {
       currentPosition[1],
       chessboard.length // Pass the chessboard size
     );
-
     for (const move of validMoves) {
       const [newX, newY] = move;
-      if (!chessboard[newX][newY]) {
+      if (
+        newX >= 0 &&
+        newY >= 0 &&
+        newX <= chessboard.length &&
+        newY <= chessboard.length &&
+        !chessboard[newX][newY]
+      ) {
         chessboard[newX][newY] = true;
         queue.push({
           position: [newX, newY],
@@ -77,6 +79,10 @@ export const bfs = (Ogchessboard, startPos, endPos) => {
       }
     }
   }
+
+  // If the loop completes without finding a path, return an indication
+  console.log('No path found');
+  return null;
 };
 
 // Usage
