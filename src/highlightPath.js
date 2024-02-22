@@ -8,15 +8,18 @@ function resetHighlight() {
 export default function highlightPath(path) {
   resetHighlight();
 
-  path.forEach(([x, y]) => {
+  // Use a loop with setTimeout to introduce delays
+  path.forEach(([x, y], index) => {
     // Assuming your cells have the 'cell' class and data attributes
     const cell = document.querySelector(
       `.cell[data-row="${x + 1}"][data-col="${y + 1}"]`
     );
 
-    // Add a class to highlight the cell
-    if (cell) {
-      cell.classList.add('highlighted');
-    }
+    // Use setTimeout to apply the 'highlighted' class with a delay
+    setTimeout(() => {
+      if (cell) {
+        cell.classList.add('highlighted');
+      }
+    }, index * 500); // Adjust the delay duration (in milliseconds) as needed
   });
 }
