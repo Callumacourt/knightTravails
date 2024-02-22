@@ -6,6 +6,8 @@ export default function dom(chessboardContainer) {
     for (let j = 0; j < 8; j++) {
       const cell = document.createElement('div');
       cell.classList.add('cell');
+      cell.dataset.row = i;
+      cell.dataset.col = j;
 
       if ((i + j) % 2 === 0) {
         cell.classList.add('light');

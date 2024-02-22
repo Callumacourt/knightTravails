@@ -36,7 +36,7 @@ function getValidMoves(x, y, chessboardSize) {
   return validMoves;
 }
 
-const bfs = (chessboard, startPos, endPos) => {
+export const bfs = (chessboard, startPos, endPos) => {
   const queue = [];
 
   queue.push({
@@ -79,8 +79,8 @@ const bfs = (chessboard, startPos, endPos) => {
 };
 
 // Usage
-const chessboardSize = 8; // Adjust the size as needed
-const chessboard = initializeChessboard(chessboardSize);
-const startPos = [1, 1];
-const endPos = [5, 1];
-bfs(chessboard, startPos, endPos);
+//const chessboardSize = 8; // Adjust the size as needed
+//const chessboard = initializeChessboard(chessboardSize);
+//const startPos = [1, 1];
+//const endPos = [5, 1];
+//bfs(chessboard, startPos, endPos);
