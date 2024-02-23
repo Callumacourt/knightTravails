@@ -1,5 +1,5 @@
 body {
-  background-color: black;
+  background-color: gray;
 }
 
 header {
@@ -7,6 +7,7 @@ header {
   justify-content: center;
   color: white;
   font-style: italic;
+  font-size: 1.2rem;
 }
 
 .body {
@@ -15,18 +16,17 @@ header {
 }
 
 .highlighted {
-  background-color: red !important;
+  background-color: green;
 }
 
 .chessboardContainer {
-  width: 80vw;
-  height: 80vh;
+  width: 75vw;
+  height: 75vh;
   display: grid;
-  border: 0.8vw solid burlywood;
+  border: 0.8vw solid floralwhite;
 }
 
 .chessboardContainer * {
-  background-color: wheat;
   height: 5vw;
   width: 5vw;
 }
@@ -50,4 +50,10 @@ header {
 .cell {
   height: 100%;
   width: 100%;
+}
+
+span {
+  background-color: green;
+  color: white;
+  margin-left: 2px;
 }
