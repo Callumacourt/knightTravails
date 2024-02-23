@@ -16,7 +16,7 @@ header {
 }
 
 .highlighted {
-  background-color: green;
+  background-color: green !important;
 }
 
 .chessboardContainer {
@@ -53,7 +53,7 @@ header {
 }
 
 span {
-  background-color: green;
+  background-color: green !important;
   color: white;
   margin-left: 2px;
 }
