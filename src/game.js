@@ -87,10 +87,3 @@ export const bfs = (Ogchessboard, startPos, endPos) => {
   console.log('No path found');
   return null;
 };
-
-// Usage
-//const chessboardSize = 8; // Adjust the size as needed
-//const chessboard = initializeChessboard(chessboardSize);
-//const startPos = [1, 1];
-//const endPos = [5, 1];
-//bfs(chessboard, startPos, endPos);
